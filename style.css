@@ -29,7 +29,8 @@ a {
   border-radius: 20px;
 }
 
-embed {
+embed,
+iframe {
   width: 100%;
   height: 99vh;
 }

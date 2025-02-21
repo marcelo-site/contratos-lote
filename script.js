@@ -1,6 +1,6 @@
 import { data } from "./data.js"
 const containerEmbed = document.querySelector("#modal-pdf")
-const embed = containerEmbed.querySelector("embed")
+const embed = containerEmbed.querySelector("iframe")
 const replyViewDocument = document.querySelector("#reply")
 const table = document.querySelector("table")
 const tbody = table.querySelector("tbody")
