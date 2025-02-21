@@ -1,7 +1,4 @@
 import { data } from "./data.js"
-const containerEmbed = document.querySelector("#modal-pdf")
-const embed = containerEmbed.querySelector("iframe")
-const replyViewDocument = document.querySelector("#reply")
 const table = document.querySelector("table")
 const tbody = table.querySelector("tbody")
 
@@ -115,8 +112,6 @@ function renderInfo({ descrpition, documents }) {
     divBtnDocument.append(documentDiv)
     documentDiv.addEventListener("click", () => {
       viewPDF("./assets/documents/" + doc)
-      // embed.src = "./assets/documents/" + doc
-      // containerEmbed.style.display = ""
     })
     divButtons.append(documentDiv);
   })
@@ -128,11 +123,6 @@ function renderInfo({ descrpition, documents }) {
 
   return tr
 }
-
-replyViewDocument.addEventListener("click", () => {
-  containerEmbed.style.display = "none"
-  embed.src = ""
-});
 
 (function () {
   data.forEach((item, i) => {
