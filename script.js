@@ -19,6 +19,10 @@ function greeting() {
   }
 }
 
+function viewPDF(doc) {
+  window.open(doc, '_blank')
+}
+
 function render({
   name, contact, pay, containerDesc, background
 }) {
@@ -110,8 +114,9 @@ function renderInfo({ descrpition, documents }) {
         <span> <i class="bi bi-download"></i></span>`
     divBtnDocument.append(documentDiv)
     documentDiv.addEventListener("click", () => {
-      embed.src = "./assets/documents/" + doc
-      containerEmbed.style.display = ""
+      viewPDF("./assets/documents/" + doc)
+      // embed.src = "./assets/documents/" + doc
+      // containerEmbed.style.display = ""
     })
     divButtons.append(documentDiv);
   })
