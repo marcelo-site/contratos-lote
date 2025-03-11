@@ -102,16 +102,17 @@ function contentInfo(data) {
   containerDesc.append(divDesc)
   containerInfo.append(containerDesc)
 
+  const pdfURL = (doc) => `https://docs.google.com/gview?url=${window.location.origin}/contratos-lote/assets/documents/${doc}&embedded=true`
+
   documents.forEach(doc => {
     const documentDiv = document.createElement("div")
 
     documentDiv.innerHTML = `<span>${doc}</span>
         <span> <i class="bi bi-download"></i></span>`
-    divBtnDocument.append(documentDiv)
-    documentDiv.addEventListener("click", () => {
-      let url = `https://docs.google.com/gview?url=${window.location.origin}/assets/documents/${doc}&embedded=true`
-      viewPDF(url)
-    })
+    divBtnDocument.append(documentDiv);
+
+    documentDiv.addEventListener("click", () => viewPDF(pdfURL(doc)));
+
     divButtons.append(documentDiv);
   })
 
