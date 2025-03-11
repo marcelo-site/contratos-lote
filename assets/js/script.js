@@ -1,4 +1,5 @@
-import { data } from "./data.js"
+import { showSheet } from "./bottom-sheet.js"
+import { data } from "./data-lote.js"
 const table = document.querySelector("table")
 const tbody = table.querySelector("tbody")
 
@@ -20,13 +21,12 @@ function viewPDF(doc) {
   window.open(doc, '_blank')
 }
 
-function render({
-  name, contact, pay, containerDesc, background
-}) {
+function render({ name, pay, data }) {
   const tr = document.createElement("tr")
   tr.classList.add("primary")
-  tr.style.background = background ? "#f8f8f8" : ""
+  // tr.style.background = background ? "#f8f8f8" : ""
   const tdName = document.createElement("td")
+  tdName.classList.add("ellipsis")
   tdName.innerText = name
   tr.append(tdName)
 
@@ -35,46 +35,44 @@ function render({
   tdPay.innerHTML = pay ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle-fill"></i>'
 
   tdPay.style.color = pay ? "green" : "red"
-
   tr.append(tdPay)
 
-  const tdContact = document.createElement("td")
-  tdContact.innerHTML = contact ? `<a class="btn-zap" target=_blank href="https://api.whatsapp.com/send?phone=55${contact.replace(/\D/g, "")}&text=${greeting()}">
-<span>${contact}</span>
-<span>
-    <i class="bi bi-whatsapp"></i>
-</span>
-  </a>` : "Sem número"
-  tr.append(tdContact)
-
   const tdEye = document.createElement("td")
-  tdEye.classList.add("eye")
-
+  tdEye.classList.add("eye", "show-btn")
   tdEye.innerHTML = "<i class='bi bi-file-earmark-text'>"
 
   tdEye.addEventListener("click", () => {
-    containerDesc.classList.toggle("none")
+    const content = contentInfo(data)
+    showSheet(content)
   })
   tr.append(tdEye)
 
   return tr
 }
 
-function renderInfo({ descrpition, documents }) {
-  const tr = document.createElement("tr")
-  tr.classList.add("container-description", "none")
-  const td = document.createElement("td")
-  td.colSpan = 4
+function contentInfo(data) {
+  const { descrpition, documents, contact, name } = data;
+  const containerInfo = document.createElement("div");
 
-  const containerInfo = document.createElement("div")
-  const containerDesc = document.createElement("div")
-  const divDesc = document.createElement("div")
+  const containerName = document.createElement("div")
+  containerName.innerHTML = `<h3>${name}</h3>`
+  containerName.classList.add("name")
+  containerName.innerHTML += contact ? `<a class="btn-zap" target=_blank href="https://api.whatsapp.com/send?phone=55${contact.replace(/\D/g, "")}&text=${greeting()}">
+   <span><i class="bi bi-whatsapp"></i></span>
+    </a>` : "<span>Sem número</span>"
 
-  const divBtnDocument = document.createElement("div")
-  const buttonDesc = document.createElement("button")
+  containerInfo.append(containerName)
+
+  const containerDesc = document.createElement("div");
+  const divDesc = document.createElement("div");
+
+  const divBtnDocument = document.createElement("div");
+  const buttonDesc = document.createElement("button");
+  buttonDesc.classList.add("active", "btn");
+
   const buttonDocument = document.createElement("button")
+  buttonDocument.classList.add("btn")
 
-  buttonDesc.classList.add("active")
   buttonDesc.innerText = "Notas"
   containerInfo.append(buttonDesc)
 
@@ -111,27 +109,21 @@ function renderInfo({ descrpition, documents }) {
         <span> <i class="bi bi-download"></i></span>`
     divBtnDocument.append(documentDiv)
     documentDiv.addEventListener("click", () => {
-      viewPDF("./assets/documents/" + doc)
+      let url = `https://docs.google.com/gview?url=${window.location.origin}/assets/documents/${doc}&embedded=true`
+      viewPDF(url)
     })
     divButtons.append(documentDiv);
   })
 
   containerInfo.append(divButtons)
-  td.append(containerInfo)
 
-  tr.append(td)
-
-  return tr
+  return containerInfo
 }
 
 (function () {
   data.forEach((item, i) => {
-    const { contact, descrpition, documents, name, pay } = item
-
-    const trInfo = renderInfo({ descrpition, documents })
-    const tr = render({ contact, name, pay, containerDesc: trInfo, background: i % 2 === 0 })
-
+    const { name, pay } = item
+    const tr = render({ name, pay, data: item })
     tbody.append(tr)
-    tbody.append(trInfo)
   })
 })()

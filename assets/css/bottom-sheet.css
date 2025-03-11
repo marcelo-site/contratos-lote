@@ -1,0 +1,157 @@
+.bottom-sheet {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s linear;
+}
+
+.bottom-sheet.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.bottom-sheet .container-bottom {
+  height: 50vh;
+  max-height: 100vh;
+  width: 100%;
+  max-width: 1150px;
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+  position: relative;
+  transform: translateY(100%);
+  transition: 0.3s ease;
+}
+
+.bottom-sheet.show .container-bottom {
+  transform: translateY(0%);
+}
+
+.bottom-sheet.dragging .container-bottom {
+  transition: none;
+}
+
+.bottom-sheet.fullscreen .container-bottom {
+  border-radius: 0;
+}
+
+.bottom-sheet .container-bottom .header {
+  display: flex;
+  justify-content: center;
+}
+
+.bottom-sheet .container-bottom .header .drag-icon {
+  padding: 15px;
+  margin-top: -15px;
+  cursor: grab;
+  user-select: none;
+}
+
+.bottom-sheet .container-bottom .header .drag-icon span {
+  height: 4px;
+  width: 40px;
+  background: #000;
+  display: block;
+  border-radius: 50px;
+}
+
+.bottom-sheet .container-bottom .body {
+  height: 100%;
+  padding: 15px 0 40px;
+  overflow-y: auto;
+}
+
+.bottom-sheet .container-bottom .body::-webkit-scrollbar {
+  width: 0;
+}
+
+.bottom-sheet .container-bottom .body h2 {
+  font-size: 1.8rem;
+}
+
+.bottom-sheet .container-bottom .body p {
+  font-size: 1.06rem;
+  margin-top: 20px;
+}
+
+.content {
+  height: 100%;
+  padding-bottom: 20px;
+  overflow-y: auto;
+}
+
+.content button {
+  margin-bottom: 2rem;
+  margin-right: .5rem;
+}
+
+#subject {
+  padding-left: 1rem;
+  padding-bottom: 2rem;
+}
+
+#subject,
+#subject>* {
+  transition: .5s all ease-in-out;
+}
+
+#subject>div {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+#subject button {
+  background: transparent;
+  border: 0;
+}
+
+details .title {
+  position: sticky;
+  top: 0;
+  background: white;
+}
+
+#subject i {
+  transition: .5s all ease-in-out;
+  font-size: 16px;
+}
+
+.hide-question {
+  opacity: 0;
+  padding: 0;
+}
+
+.hide-screen {
+  height: 0;
+  position: absolute;
+  z-index: -2;
+}
+
+.full-screen {
+  height: 100%;
+}
+
+.show-question {
+  opacity: 1;
+  position: static;
+}
