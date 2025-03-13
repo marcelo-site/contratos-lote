@@ -218,6 +218,7 @@ tr th:first-child {
   height: 14px;
   background: #D1D6E6;
   border-radius: 7px;
+  margin-top: 4px;
 }
 
 .line {
