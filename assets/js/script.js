@@ -8,12 +8,12 @@ function greeting() {
   const hrs = date.getHours()
 
   if (hrs >= 0 && hrs < 12) {
-    return `Olá, bom dia`
+    return `Olá, bom dia!\n`
   } else if (hrs >= 12 && hrs < 18) {
-    return `Olá, boa tarde`
+    return `Olá, boa tarde!\n`
   }
   else if (hrs >= 18 && hrs < 23) {
-    return `Olá, boa noite`
+    return `Olá, boa noite!\n`
   }
 }
 
@@ -24,7 +24,6 @@ function viewPDF(doc) {
 function render({ name, pay, data }) {
   const tr = document.createElement("tr")
   tr.classList.add("primary")
-  // tr.style.background = background ? "#f8f8f8" : ""
   const tdName = document.createElement("td")
   tdName.classList.add("ellipsis")
   tdName.innerText = name
@@ -50,6 +49,23 @@ function render({ name, pay, data }) {
   return tr
 }
 
+function handleDocs(data) {
+  const divBtnDocument = document.createElement("div");
+  divBtnDocument.classList.add("btn-document")
+
+  const pdfURL = (doc) => `https://docs.google.com/gview?url=${window.location.origin}/contratos-lote/assets/documents/${doc}&embedded=true`;
+
+  data.forEach(doc => {
+    const btn = document.createElement("div")
+    btn.addEventListener("click", () => viewPDF(pdfURL(doc)));
+    btn.innerHTML = `<span>${doc}</span>
+        <span> <i class="bi bi-download"></i></span>`
+    divBtnDocument.append(btn);
+  })
+
+  return divBtnDocument
+}
+
 function contentInfo(data) {
   const { descrpition, documents, contact, name } = data;
   const containerInfo = document.createElement("div");
@@ -59,14 +75,13 @@ function contentInfo(data) {
   containerName.classList.add("name")
   containerName.innerHTML += contact ? `<a class="btn-zap" target=_blank href="https://api.whatsapp.com/send?phone=55${contact.replace(/\D/g, "")}&text=${greeting()}">
    <span><i class="bi bi-whatsapp"></i></span>
-    </a>` : "<span>Sem número</span>"
+    </a>` : ""
 
   containerInfo.append(containerName)
 
   const containerDesc = document.createElement("div");
   const divDesc = document.createElement("div");
 
-  const divBtnDocument = document.createElement("div");
   const buttonDesc = document.createElement("button");
   buttonDesc.classList.add("active", "btn");
 
@@ -77,7 +92,6 @@ function contentInfo(data) {
   containerInfo.append(buttonDesc)
 
   const divButtons = document.createElement("div")
-  divButtons.classList.add("btn-document")
   divButtons.classList.add("none")
 
   buttonDesc.addEventListener("click", ({ target }) => {
@@ -102,19 +116,9 @@ function contentInfo(data) {
   containerDesc.append(divDesc)
   containerInfo.append(containerDesc)
 
-  const pdfURL = (doc) => `https://docs.google.com/gview?url=${window.location.origin}/contratos-lote/assets/documents/${doc}&embedded=true`
+  const buttons = handleDocs(documents);
 
-  documents.forEach(doc => {
-    const documentDiv = document.createElement("div")
-
-    documentDiv.innerHTML = `<span>${doc}</span>
-        <span> <i class="bi bi-download"></i></span>`
-    divBtnDocument.append(documentDiv);
-
-    documentDiv.addEventListener("click", () => viewPDF(pdfURL(doc)));
-
-    divButtons.append(documentDiv);
-  })
+  divButtons.append(buttons)
 
   containerInfo.append(divButtons)
 
@@ -127,4 +131,6 @@ function contentInfo(data) {
     const tr = render({ name, pay, data: item })
     tbody.append(tr)
   })
-})()
+})();
+
+export { handleDocs }

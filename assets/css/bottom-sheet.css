@@ -33,7 +33,7 @@
   height: 50vh;
   max-height: 100vh;
   width: 100%;
-  max-width: 1150px;
+  max-width: 768px;
   background: #fff;
   padding: 25px 30px;
   border-radius: 12px 12px 0 0;
@@ -134,24 +134,4 @@ details .title {
 #subject i {
   transition: .5s all ease-in-out;
   font-size: 16px;
-}
-
-.hide-question {
-  opacity: 0;
-  padding: 0;
-}
-
-.hide-screen {
-  height: 0;
-  position: absolute;
-  z-index: -2;
-}
-
-.full-screen {
-  height: 100%;
-}
-
-.show-question {
-  opacity: 1;
-  position: static;
 }

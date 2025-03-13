@@ -7,7 +7,8 @@ export const data = [
     documents: [
       "contrato-edjane.pdf",
       "recibo-1.pdf",
-    ]
+    ],
+    msg: ""
   },
   {
     name: "Maria Edinice Silva Sant'ana",

@@ -1,44 +1,43 @@
-import { showSheet } from "./bottom-sheet.js"
-import { dataMovements } from "./data-movement.js"
 
-const btnPlus = document.querySelector(".btn-plus")
+import { handleDocs } from "./script.js"
+import { showSheet } from "./bottom-sheet.js"
+import { dataMovements, docsProcess } from "./data-movement.js"
+
+const btnSubject = document.querySelector("#btn-subject");
+const btnDocProcess = document.querySelector("#btn-doc-process");
 const containerSubject = document.querySelector("#subject");
+const containerDocProcess = document.querySelector("#doc-process");
 const containerMovements = document.querySelector("#movements > div");
-const details = document.querySelectorAll("details")
-let showSubject = false
+const detailsMain = document.querySelectorAll(".details-main");
 
 const subject = `DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO - DIREITO CIVIL (899) - Obrigações (7681) - Inadimplemento (7691) - Rescisão / Resolução (10582 - DIREITO CIVIL (899) - Fatos Jurídicos (7947) - Ato / Negócio Jurídico (4701) - Defeito, nulidade ou anulação (4703 - DIREITO PROCESSUAL CIVIL E DO TRABALHO (8826) - Tutela Provisória (9192) - Liminar (9196`
 
-const toggle = () => {
-  containerSubject.classList.toggle("show-question")
-  containerSubject.classList.toggle("full-screen");
-  setTimeout(() => {
-    if (showSubject) btnPlus.innerHTML = "Mostrar mais"
-    else btnPlus.innerHTML = "Mostrar menos"
+const toggle = (e) => {
+  const { id } = e.target
 
-    showSubject = !showSubject
+  if (id === "btn-doc-process") {
+    btnSubject.classList.remove("active");
+    containerSubject.classList.add("none");
 
-    containerSubject.classList.toggle("hide-screen");
-  }, 300)
+    btnDocProcess.classList.add("active");
+    containerDocProcess.classList.remove("none");
+  } else if (id === "btn-subject") {
+    btnSubject.classList.add("active");
+    containerSubject.classList.remove("none");
+
+    btnDocProcess.classList.remove("active");
+    containerDocProcess.classList.add("none");
+  }
 }
 
-details.forEach(item => {
-  item.addEventListener("click", function () {
-    // toggle()
-    btnPlus.innerHTML = "Mostrar mais"
-    details.forEach(dt => {
-      if (dt !== this) dt.open = false
-    })
-  })
-})
+btnDocProcess.addEventListener("click", toggle)
 
-btnPlus.addEventListener("click", (e) => {
-  toggle()
+btnSubject.addEventListener("click", (e) => {
+  toggle(e)
   e.stopPropagation()
 })
 
 const baseURL = "https://gateway.cloud.pje.jus.br/tpu"
-
 const icon = `<i class="bi bi-question-circle"></i>`
 
 const getSubject = async (code) => {
@@ -56,21 +55,25 @@ const contentLine = (active) => {
 </div>`
 }
 
-const contentMovement = ({ date, content }) => {
+const contentMovement = ({ date, content, open }) => {
   return (
-    `<div class="timeline-content">
-<h4>${date}</h4>
-<p>${content}</p>
-</div>`
+    ` <details ${open ? "open" : ""}>
+      <summary class="summary" style="width:100%; border: 0; padding: 0;">${date}</summary>
+    <p>${content}</p>
+      </details`
+    //     `<div class="timeline-content">
+    // <h4>${date}</h4>
+    // <p>${content}</p>
+    // <span></span>
+    // </div>`
   )
 }
 
 const insertMovements = ({ date, content, active }) => {
-  const div = document.createElement("div")
-  div.classList.add("card")
-  div.innerHTML = contentLine(active)
-  div.innerHTML += contentMovement({ date, content })
-
+  const div = document.createElement("div");
+  div.classList.add("card");
+  div.innerHTML = contentLine(active);
+  div.innerHTML += contentMovement({ date, content, open: !active });
   return div
 }
 
@@ -80,7 +83,15 @@ dataMovements.forEach((item, i) => {
 
   const content = insertMovements({ ...item, active })
   containerMovements.append(content)
-})
+});
+
+detailsMain.forEach(item => {
+  item.addEventListener("click", function () {
+    detailsMain.forEach(dt => {
+      if (dt !== this) dt.open = false
+    })
+  })
+});
 
 const inity = async () => {
   const subjectSplit = subject.split("-")
@@ -100,9 +111,9 @@ const inity = async () => {
         button.innerHTML = `<sup>${icon}</sup>`
 
         button.addEventListener("click", () => {
-          const div = document.createElement("div");
+          const div = document.createElement("span");
           if (desc) {
-            div.innerHTML += `<div><div><span style="font-weight: 600; font-size:20px; margin: 10px 0; display:inline-block;">Explicação: </span><br />${desc}</div>`
+            div.innerHTML += `<div><span style="font-weight: 600; font-size:20px; margin: 10px 0; display:inline-block;">Explicação: </span><br />${desc}</div>`
           }
           if (norma) {
             div.innerHTML += `<div><span style="font-weight: 600; font-size:20px; margin: 10px 0; display:inline-block;">Norma: </span><br />${norma}</div>`
@@ -113,9 +124,11 @@ const inity = async () => {
         div.append(button)
       }
     }
-
     containerSubject.appendChild(div)
-  }))
+  }));
+
+  const docs = handleDocs(docsProcess);
+  containerDocProcess.append(docs)
 }
 
 inity();
