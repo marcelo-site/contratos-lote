@@ -85,4 +85,13 @@ export const data = [
       "contrato-maria-alessandra.pdf"
     ]
   },
+  {
+    name: "Luiz Fernando",
+    pay: false,
+    contact: "(81) 9530-5870",
+    descrpition: "Luiz comprou um lote e pelo local é o lote 09 não foi possivel ver seu contrato mas, segundo ele consta o lote 04 como objeto de promessa de compra e venda",
+    documents: [
+      "contrato-maria-alessandra.pdf"
+    ]
+  },
 ]
