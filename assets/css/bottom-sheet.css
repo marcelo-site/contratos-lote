@@ -65,6 +65,10 @@
   margin-top: -15px;
   cursor: grab;
   user-select: none;
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .bottom-sheet .container-bottom .header .drag-icon span {

@@ -12,7 +12,7 @@ const getSubject = async (code) => {
   return json;
 }
 
-export const contentSubject = async (containerSubject) => {
+const contentSubject = async (containerSubject) => {
   const subjectSplit = subject.split("-")
   const arraySubject = Array.from(subjectSplit)
 
@@ -46,3 +46,5 @@ export const contentSubject = async (containerSubject) => {
     containerSubject.appendChild(div)
   }));
 }
+
+export { contentSubject }

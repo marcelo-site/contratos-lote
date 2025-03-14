@@ -77,7 +77,5 @@ const inity = async () => {
   tablinks.forEach(tablink => tablink.addEventListener("click", openCity));
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  inity();
-})
+window.addEventListener("DOMContentLoaded", inity)
 

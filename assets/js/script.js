@@ -18,20 +18,23 @@ function greeting() {
 }
 
 function viewPDF(doc) {
-  window.open(doc, '_blank')
+  const url = `https://docs.google.com/gview?url=${window.location.origin}/contratos-lote/assets/documents/${doc}&embedded=true`;
+
+  window.open(url, '_blank');
 }
 
-function render({ name, pay, data }) {
-  const tr = document.createElement("tr")
-  tr.classList.add("primary")
-  const tdName = document.createElement("td")
+function renderTable({ name, pay, data }) {
+  const tr = document.createElement("tr");
+  const tdName = document.createElement("td");
   tdName.classList.add("ellipsis")
   tdName.innerText = name
   tr.append(tdName)
 
   const tdPay = document.createElement("td")
   tdPay.classList.add("pay")
-  tdPay.innerHTML = pay ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle-fill"></i>'
+  tdPay.innerHTML = pay ?
+    '<i class="bi bi-check-circle-fill"></i>' :
+    '<i class="bi bi-x-circle-fill"></i>'
 
   tdPay.style.color = pay ? "green" : "red"
   tr.append(tdPay)
@@ -53,15 +56,14 @@ function handleDocs(data) {
   const divBtnDocument = document.createElement("div");
   divBtnDocument.classList.add("btn-document")
 
-  const pdfURL = (doc) => `https://docs.google.com/gview?url=${window.location.origin}/contratos-lote/assets/documents/${doc}&embedded=true`;
-
   data.forEach(doc => {
     const btn = document.createElement("div")
-    btn.addEventListener("click", () => viewPDF(pdfURL(doc)));
+    btn.addEventListener("click", () => viewPDF(doc));
+
     btn.innerHTML = `<span>${doc}</span>
-        <span> <i class="bi bi-download"></i></span>`
+<span><i class="bi bi-download"></i></span>`
     divBtnDocument.append(btn);
-  })
+  });
 
   return divBtnDocument
 }
@@ -128,7 +130,7 @@ function contentInfo(data) {
 (function () {
   data.forEach((item, i) => {
     const { name, pay } = item
-    const tr = render({ name, pay, data: item })
+    const tr = renderTable({ name, pay, data: item })
     tbody.append(tr)
   })
 })();
