@@ -235,7 +235,7 @@ tr th:first-child {
 .movements>div {
   .card {
     display: flex;
-    gap: 1.25rem;
+    gap: 1rem;
     width: 100%;
     background: #FFFFFF;
     box-shadow: 0 2px 2px 0 #eeeeee40;
