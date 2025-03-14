@@ -30,15 +30,26 @@
   <div class="container">
     <details class="details-main">
       <summary>Processo</summary>
-      <button class="btn active" id="btn-subject">Assunto</button>
-      <button class="btn" id="btn-doc-process">Documentos</button>
-      <div id="doc-process" class="none"></div>
-
-      <div id="subject" class=""></div>
-      <div class="title">Andamento</div>
-      <div class="movements" id="movements">
-        <div></div>
+      <div class="tab">
+        <button class="tablinks ellipsis active" data-open="container-movements" id="defaultOpen">Andamento</button>
+        <button class="tablinks ellipsis" data-open="container-subject">Assunto</button>
+        <button class="tablinks ellipsis" data-open="container-doc-process">Documento</button>
       </div>
+
+      <div id="container-movements" class="tabcontent">
+        <div class="movements" id="movements">
+          <div></div>
+        </div>
+      </div>
+
+      <div id="container-subject" class="tabcontent none">
+        <div id="subject" class=""></div>
+      </div>
+
+      <div id="container-doc-process" class="tabcontent none">
+        <div id="doc-process" class=""></div>
+      </div>
+
     </details>
 
     <details class="details-main">
@@ -49,7 +60,7 @@
             <tr>
               <th class="primary">Cliente</th>
               <th style="width: 64px;">Pago</th>
-              <th style="width: 50px;">#</th>
+              <th style="width: 54px;">#</th>
             </tr>
           </thead>
           <tbody> </tbody>
