@@ -134,6 +134,7 @@ tr td:first-child,
 tr th:first-child {
   text-align: start;
   padding-left: 10px;
+  font-weight: 500;
 }
 
 .container-description td {

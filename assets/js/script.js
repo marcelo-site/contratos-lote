@@ -128,7 +128,7 @@ function contentInfo(data) {
 }
 
 (function () {
-  data.forEach((item, i) => {
+  data.forEach((item) => {
     const { name, pay } = item
     const tr = renderTable({ name, pay, data: item })
     tbody.append(tr)

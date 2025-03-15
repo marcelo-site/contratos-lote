@@ -1,21 +1,21 @@
-let bottomSheet = document.querySelector(".bottom-sheet");
-let overlay = document.querySelector(".overlay");
-let containerBottom = document.querySelector(".container-bottom");
-let content = document.querySelector("#content");
-let dragIcon = document.querySelector(".drag-icon")
+const bottomSheet = document.querySelector(".bottom-sheet");
+const overlay = document.querySelector(".overlay");
+const containerBottom = document.querySelector(".container-bottom");
+const content = document.querySelector("#content");
+const dragIcon = document.querySelector(".drag-icon")
 
-let isDragging = false,
-  startY,
-  startHeight;
+let isDragging = false
+let startY
+const windowHeight = window.innerHeight
 
-let updateHeight = (height) => {
-  containerBottom.style.height = `${height}vh`;
-  bottomSheet.classList.toggle("fullscreen", height === 100);
+const updateHeight = (height) => {
+  containerBottom.style.height = `${height}px`;
+  bottomSheet.classList.toggle("fullscreen", height === windowHeight * 0.9);
 };
 
 export const showSheet = (data) => {
   bottomSheet.classList.add("show");
-  updateHeight(60);
+  updateHeight(windowHeight * 0.6);
   content.appendChild(data)
   document.body.style.overflow = "hidden";
 
@@ -27,41 +27,43 @@ const hideSheet = () => {
   content.innerHTML = ""
 };
 
-let dragStart = (e) => {
+const dragStart = (e) => {
   isDragging = true;
   bottomSheet.classList.add("dragging");
   startY = e.pageY || e.touches?.[0].pageY;
-  startHeight = parseInt(containerBottom.style.height);
 };
 
-let dragging = (e) => {
+const dragging = (e) => {
   if (!isDragging) return;
 
-  let delta = startY - (e.pageY || e.touches?.[0].pageY);
-  let newHeight = startHeight + (delta / window.innerHeight) * 100;
+  const delta = startY - (e.pageY || e.touches?.[0].pageY);
+  const newHeight = ((windowHeight - startY) + delta);
 
-  updateHeight(newHeight);
+  const move = Math.abs(newHeight - startY)
+
+  if (move > 8) {
+    updateHeight(newHeight);
+  }
 };
 
-let dragStop = () => {
+const dragStop = () => {
   isDragging = false;
   bottomSheet.classList.remove("dragging");
+  const sheetHeight = parseInt(containerBottom.style.height);
 
-  let sheetHeight = parseInt(containerBottom.style.height);
-
-  sheetHeight < 25
+  sheetHeight < windowHeight / 4
     ? hideSheet()
-    : sheetHeight > 75
-      ? updateHeight(90)
-      : updateHeight(60);
+    : sheetHeight > windowHeight * 0.6
+      ? updateHeight(windowHeight * 0.9)
+      : updateHeight(windowHeight * 0.6);
 };
 
-dragIcon.addEventListener("mousedown", dragStart);
-dragIcon.addEventListener("mousemove", dragging);
-document.addEventListener("mouseup", dragStop);
+dragIcon.addEventListener("mousedown", dragStart, { passive: true });
+document.addEventListener("mousemove", dragging, { passive: true });
+document.addEventListener("mouseup", dragStop, { passive: true });
 
-dragIcon.addEventListener("touchstart", dragStart);
-dragIcon.addEventListener("touchmove", dragging);
-document.addEventListener("touchend", dragStop);
+dragIcon.addEventListener("touchstart", dragStart, { passive: true });
+document.addEventListener("touchmove", dragging, { passive: true });
+document.addEventListener("touchend", dragStop, { passive: true });
 
 overlay.addEventListener("click", hideSheet);
