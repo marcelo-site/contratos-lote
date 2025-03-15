@@ -41,7 +41,7 @@ function renderTable({ name, pay, data }) {
 
   const tdEye = document.createElement("td")
   tdEye.classList.add("eye", "show-btn")
-  tdEye.innerHTML = "<i class='bi bi-file-earmark-text'>"
+  tdEye.innerHTML = `<i class="bi bi-house-door"></i>`
 
   tdEye.addEventListener("click", () => {
     const content = contentInfo(data)
