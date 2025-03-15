@@ -3,17 +3,17 @@ import { data } from "./data-lote.js"
 const table = document.querySelector("table")
 const tbody = table.querySelector("tbody")
 
-function greeting() {
+function greeting(name) {
   const date = new Date()
   const hrs = date.getHours()
 
   if (hrs >= 0 && hrs < 12) {
-    return `Olá, bom dia!\n`
+    return `Olá, bom dia!\n${name}`
   } else if (hrs >= 12 && hrs < 18) {
-    return `Olá, boa tarde!\n`
+    return `Olá, boa tarde!\n${name}`
   }
   else if (hrs >= 18 && hrs < 23) {
-    return `Olá, boa noite!\n`
+    return `Olá, boa noite!\n${name}`
   }
 }
 
@@ -75,7 +75,7 @@ function contentInfo(data) {
   const containerName = document.createElement("div")
   containerName.innerHTML = `<h3>${name}</h3>`
   containerName.classList.add("name")
-  containerName.innerHTML += contact ? `<a class="btn-zap" target=_blank href="https://api.whatsapp.com/send?phone=55${contact.replace(/\D/g, "")}&text=${greeting()}">
+  containerName.innerHTML += contact ? `<a class="btn-zap" target=_blank href="https://api.whatsapp.com/send?phone=55${contact.replace(/\D/g, "")}&text=${encodeURIComponent(greeting(name))}">
    <span><i class="bi bi-whatsapp"></i></span>
     </a>` : ""
 

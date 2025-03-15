@@ -14,7 +14,7 @@ export const data = [
     name: "Maria Edinice Silva Sant'ana",
     pay: false,
     contact: "(81) 9 8252-3632",
-    descrpition: "Alega ter feito um adiantamento e com isso recebeu um desconto, há pouco junto com o marido começou a construir, o marido é um  homem com um tampão no olho chamado Genegrecio ou Antonio de Jó.",
+    descrpition: "Alega ter feito um adiantamento e com isso recebeu um desconto, há pouco junto com o marido começou a construir, o marido é um  homem com um tampão no olho chamado Genegrecio ou Antonio de Jó",
     documents: [
       "contrato-ednice.pdf",
       "recibo-ednice.pdf",
@@ -25,7 +25,7 @@ export const data = [
     name: "Maria Esterffany da Silva Santos",
     pay: false,
     contact: "(81) 9 8242-8872",
-    descrpition: "Comprou o lote 04 mas, aparentemente resolveu com Paulo indo para outro loteamento outro ponto que o lote 04 há outro cliente, Luiz Fernando afirmando ter comprado esse lote.",
+    descrpition: "Comprou o lote 04 mas, aparentemente resolveu com Paulo indo para outro loteamento outro ponto que o lote 04 há outro cliente, Luiz Fernando afirmando ter comprado esse lote",
     documents: [
       "contrato-esterffany.pdf",
     ]
@@ -43,7 +43,7 @@ export const data = [
     name: "Maria Aparecida de Lima Santos",
     pay: false,
     contact: "(81) 9717-8830",
-    descrpition: "Comprou o lote 19 que Paulo falou estar disponivél para venda.",
+    descrpition: "Comprou o lote 19 que Paulo falou estar disponivél para venda",
     documents: [
       "contrato-maria-aparecida.pdf",
     ]
@@ -96,14 +96,16 @@ export const data = [
     name: "Lucas construção ocupada",
     pay: false,
     contact: "(81) 9636-3854",
-    descrpition: "Lucas, apelidado de Velhinho, pagou e ao ser informado que não houve pagemento da parte de Paulo prometeu nos pagar novamente se fosse nescessário",
+    descrpition: "Lucas, apelidado de Velhinho, pagou e ao ser informado que não houve pagamento da parte de Paulo prometeu nos pagar novamente se fosse nescessário.",
     documents: []
   },
   {
-    name: "Aldiclecia de Carminha",
+    name: "Maria Aldiclecia da Silva Celestino",
     pay: false,
     contact: "(81) 8171-7875",
-    descrpition: "Não há informações sobre qual lote adiclecia comprou, prima de Leonardo marido de Maria Alessandra que comprou o lote 01",
-    documents: []
+    descrpition: "",
+    documents: [
+      "contrato-aldiclecia.pdf"
+    ]
   },
 ]
