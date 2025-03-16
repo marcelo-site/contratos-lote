@@ -3,17 +3,17 @@ import { data } from "./data-lote.js"
 const table = document.querySelector("table")
 const tbody = table.querySelector("tbody")
 
-function greeting(name) {
+function greeting(name, lote) {
   const date = new Date()
   const hrs = date.getHours()
 
   if (hrs >= 0 && hrs < 12) {
-    return `Olá, bom dia!\n${name}`
+    return `Olá, bom dia!\n${name}\nLote ${lote}`
   } else if (hrs >= 12 && hrs < 18) {
-    return `Olá, boa tarde!\n${name}`
+    return `Olá, boa tarde!\n${name}\nLote ${lote}`
   }
   else if (hrs >= 18 && hrs < 23) {
-    return `Olá, boa noite!\n${name}`
+    return `Olá, boa noite!\n${name}\nLote ${lote}`
   }
 }
 
@@ -40,42 +40,42 @@ function renderTable({ name, pay, data }) {
   tr.append(tdPay)
 
   const tdEye = document.createElement("td")
-  tdEye.classList.add("eye", "show-btn")
-  tdEye.innerHTML = `<i class="bi bi-house-door"></i>`
+  tdEye.classList.add("eye", "show-btn");
+  tdEye.innerHTML = `<i class="bi bi-eye-fill"></i>`;
 
   tdEye.addEventListener("click", () => {
-    const content = contentInfo(data)
-    showSheet(content)
+    const content = contentInfo(data);
+    showSheet(content);
   })
-  tr.append(tdEye)
+  tr.append(tdEye);
 
   return tr
 }
 
 function handleDocs(data) {
   const divBtnDocument = document.createElement("div");
-  divBtnDocument.classList.add("btn-document")
+  divBtnDocument.classList.add("btn-document");
 
   data.forEach(doc => {
     const btn = document.createElement("div")
     btn.addEventListener("click", () => viewPDF(doc));
 
     btn.innerHTML = `<span>${doc}</span>
-<span><i class="bi bi-download"></i></span>`
+<span><i class="bi bi-download"></i></span>`;
     divBtnDocument.append(btn);
   });
 
-  return divBtnDocument
+  return divBtnDocument;
 }
 
 function contentInfo(data) {
-  const { descrpition, documents, contact, name } = data;
+  const { descrpition, documents, contact, name, lote } = data;
   const containerInfo = document.createElement("div");
 
-  const containerName = document.createElement("div")
-  containerName.innerHTML = `<h3>${name}</h3>`
-  containerName.classList.add("name")
-  containerName.innerHTML += contact ? `<a class="btn-zap" target=_blank href="https://api.whatsapp.com/send?phone=55${contact.replace(/\D/g, "")}&text=${encodeURIComponent(greeting(name))}">
+  const containerName = document.createElement("div");
+  containerName.innerHTML = `<h3>${name}</h3>`;
+  containerName.classList.add("name");
+  containerName.innerHTML += contact ? `<a class="btn-zap" target=_blank href="https://api.whatsapp.com/send?phone=55${contact.replace(/\D/g, "")}&text=${encodeURIComponent(greeting(name, lote))}">
    <span><i class="bi bi-whatsapp"></i></span>
     </a>` : ""
 
@@ -119,20 +119,18 @@ function contentInfo(data) {
   containerInfo.append(containerDesc)
 
   const buttons = handleDocs(documents);
-
   divButtons.append(buttons)
-
   containerInfo.append(divButtons)
 
   return containerInfo
 }
 
-(function () {
+document.addEventListener("DOMContentLoaded", () => {
   data.forEach((item) => {
-    const { name, pay } = item
-    const tr = renderTable({ name, pay, data: item })
+    const { name, pay, lote } = item
+    const tr = renderTable({ name, pay, data: item, lote })
     tbody.append(tr)
   })
-})();
+})
 
 export { handleDocs }

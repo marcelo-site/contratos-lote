@@ -3,11 +3,12 @@ export const data = [
     name: "Edjane Barbosa da Silva",
     pay: false,
     contact: "(81) 9 8138-2005",
-    descrpition: "Ednice comprou o lote 07 que também foi vendido à Rubem Fernando de Souza, há também um recibo que alega ter feito um adiantamento de parcelas e com isso recebeu um desconto.",
+    descrpition: "Edjane comprou o lote 07 que também foi vendido à Rubem Fernando de Souza, há também um recibo que alega ter feito um adiantamento de parcelas e com isso recebeu um desconto.",
     documents: [
       "contrato-edjane.pdf",
       "recibo-1.pdf",
     ],
+    lote: "07",
     msg: ""
   },
   {
@@ -18,7 +19,8 @@ export const data = [
     documents: [
       "contrato-ednice.pdf",
       "recibo-ednice.pdf",
-    ]
+    ],
+    lote: "15"
   },
 
   {
@@ -28,16 +30,18 @@ export const data = [
     descrpition: "Comprou o lote 04 mas, aparentemente resolveu com Paulo indo para outro loteamento outro ponto que o lote 04 há outro cliente, Luiz Fernando afirmando ter comprado esse lote",
     documents: [
       "contrato-esterffany.pdf",
-    ]
+    ],
+    lote: "04"
   },
   {
     name: "José Evano de Oliveira",
     pay: false,
     contact: "",
-    descrpition: "",
+    descrpition: "Foi negociado com Dorgival",
     documents: [
       "contrato-evano.pdf",
-    ]
+    ],
+    lote: "05"
   },
   {
     name: "Maria Aparecida de Lima Santos",
@@ -46,16 +50,18 @@ export const data = [
     descrpition: "Comprou o lote 19 que Paulo falou estar disponivél para venda",
     documents: [
       "contrato-maria-aparecida.pdf",
-    ]
+    ],
+    lote: "19"
   },
   {
     name: "Rubem Fernando de Souza",
     pay: false,
     contact: "(81) 9727-1619",
-    descrpition: "Comprou o lote 07 que também foi vendido a Ednice",
+    descrpition: "Comprou o lote 07 que também foi vendido a Ednice, esse lote foi negociado com Dorgival",
     documents: [
       "contrato-rubem.pdf"
-    ]
+    ],
+    lote: "07"
   },
   {
     name: "José Lucas de Araújo Silva",
@@ -65,16 +71,18 @@ export const data = [
     documents: [
       "contrato-jose-lucas-08.pdf",
       "contrato-jose-lucas-09.pdf"
-    ]
+    ],
+    lote: "08 e 09"
   },
   {
     name: "Rafael de Araújo Silva",
     pay: true,
     contact: "(81) 9889-3196",
-    descrpition: "Professor Rafael comprou um lote que Paulo acordou que estava pago",
+    descrpition: "Professor Rafael comprou o lote 10 e estar pago há um segundo contrato que consta o lote 10 vendido a Maria Alessandra da Silva Lima Alquino, mulher de Leonardo",
     documents: [
       "contrato-rafael.pdf"
-    ]
+    ],
+    lote: "10"
   },
   {
     name: "Maria Alessandra da Silva Lima Alquino",
@@ -83,21 +91,24 @@ export const data = [
     descrpition: "Maria Alessandra, casada com Leonardo, comprou o lote 01 que estar pago",
     documents: [
       "contrato-maria-alessandra.pdf"
-    ]
+    ],
+    lote: "01"
   },
   {
     name: "Luiz Fernando",
     pay: false,
     contact: "(81) 9530-5870",
     descrpition: "Luiz comprou um lote e pelo local apontado por ele é o lote 09 não foi possivel ver seu contrato mas, segundo ele consta o lote 04 como objeto do negócio",
-    documents: []
+    documents: [],
+    lote: "04"
   },
   {
     name: "Lucas construção ocupada",
     pay: false,
     contact: "(81) 9636-3854",
     descrpition: "Lucas, apelidado de Velhinho, pagou e ao ser informado que não houve pagamento da parte de Paulo prometeu nos pagar novamente se fosse nescessário.",
-    documents: []
+    documents: [],
+    lote: ""
   },
   {
     name: "Maria Aldiclecia da Silva Celestino",
@@ -106,6 +117,7 @@ export const data = [
     descrpition: "",
     documents: [
       "contrato-aldiclecia.pdf"
-    ]
+    ],
+    lote: "06"
   },
 ]
