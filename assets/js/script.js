@@ -9,12 +9,14 @@ function greeting(name, msg) {
 
   if (hrs >= 0 && hrs < 12) {
     return `Olá, bom dia!\n${name}\n${msg}`
-  } else if (hrs >= 12 && hrs < 18) {
+  }
+  if (hrs >= 12 && hrs < 18) {
     return `Olá, boa tarde!\n${name}\n${msg}`
   }
-  else if (hrs >= 18 && hrs < 23) {
+  if (hrs >= 18 && hrs < 23) {
     return `Olá, boa noite!\n${name}\n${msg}`
   }
+  return ""
 }
 
 function viewPDF(doc) {
