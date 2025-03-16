@@ -3,17 +3,17 @@ import { data } from "./data-lote.js"
 const table = document.querySelector("table")
 const tbody = table.querySelector("tbody")
 
-function greeting(name, lote) {
+function greeting(name, msg) {
   const date = new Date()
   const hrs = date.getHours()
 
   if (hrs >= 0 && hrs < 12) {
-    return `Olá, bom dia!\n${name}\nLote ${lote}`
+    return `Olá, bom dia!\n${name}\n${msg}`
   } else if (hrs >= 12 && hrs < 18) {
-    return `Olá, boa tarde!\n${name}\nLote ${lote}`
+    return `Olá, boa tarde!\n${name}\n${msg}`
   }
   else if (hrs >= 18 && hrs < 23) {
-    return `Olá, boa noite!\n${name}\nLote ${lote}`
+    return `Olá, boa noite!\n${name}\n${msg}`
   }
 }
 
@@ -69,13 +69,13 @@ function handleDocs(data) {
 }
 
 function contentInfo(data) {
-  const { descrpition, documents, contact, name, lote } = data;
+  const { descrpition, documents, contact, name, msg } = data;
   const containerInfo = document.createElement("div");
 
   const containerName = document.createElement("div");
   containerName.innerHTML = `<h3>${name}</h3>`;
   containerName.classList.add("name");
-  containerName.innerHTML += contact ? `<a class="btn-zap" target=_blank href="https://api.whatsapp.com/send?phone=55${contact.replace(/\D/g, "")}&text=${encodeURIComponent(greeting(name, lote))}">
+  containerName.innerHTML += contact ? `<a class="btn-zap" target=_blank href="https://api.whatsapp.com/send?phone=55${contact.replace(/\D/g, "")}&text=${encodeURIComponent(greeting(name, msg))}">
    <span><i class="bi bi-whatsapp"></i></span>
     </a>` : ""
 

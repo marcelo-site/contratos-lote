@@ -10,15 +10,13 @@ const windowHeight = window.innerHeight
 
 const updateHeight = (height) => {
   containerBottom.style.height = `${height}px`;
-  bottomSheet.classList.toggle("fullscreen", height === windowHeight * 0.9);
 };
 
 export const showSheet = (data) => {
   bottomSheet.classList.add("show");
-  updateHeight(windowHeight * 0.6);
+  updateHeight(windowHeight * 0.9);
   content.appendChild(data)
   document.body.style.overflow = "hidden";
-
 };
 
 const hideSheet = () => {
@@ -30,13 +28,13 @@ const hideSheet = () => {
 const dragStart = (e) => {
   isDragging = true;
   bottomSheet.classList.add("dragging");
-  startY = e.pageY || e.touches?.[0].pageY;
+  startY = (e.pageY || e.touches?.[0].pageY)
 };
 
 const dragging = (e) => {
   if (!isDragging) return;
 
-  const delta = startY - (e.pageY || e.touches?.[0].pageY);
+  const delta = startY - (e.pageY || e.touches?.[0].pageY) + window.scrollY;
   const newHeight = ((windowHeight - startY) + delta);
 
   const move = Math.abs(newHeight - startY)
@@ -51,11 +49,9 @@ const dragStop = () => {
   bottomSheet.classList.remove("dragging");
   const sheetHeight = parseInt(containerBottom.style.height);
 
-  sheetHeight < windowHeight / 4
+  sheetHeight < windowHeight * 0.7
     ? hideSheet()
-    : sheetHeight > windowHeight * 0.6
-      ? updateHeight(windowHeight * 0.9)
-      : updateHeight(windowHeight * 0.6);
+    : updateHeight(windowHeight * 0.9);
 };
 
 dragIcon.addEventListener("mousedown", dragStart, { passive: true });

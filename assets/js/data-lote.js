@@ -8,8 +8,7 @@ export const data = [
       "contrato-edjane.pdf",
       "recibo-1.pdf",
     ],
-    lote: "07",
-    msg: ""
+    msg: "Lote 07"
   },
   {
     name: "Maria Edinice Silva Sant'ana",
@@ -20,9 +19,8 @@ export const data = [
       "contrato-ednice.pdf",
       "recibo-ednice.pdf",
     ],
-    lote: "15"
+    msg: "Lote 15"
   },
-
   {
     name: "Maria Esterffany da Silva Santos",
     pay: false,
@@ -31,7 +29,7 @@ export const data = [
     documents: [
       "contrato-esterffany.pdf",
     ],
-    lote: "04"
+    msg: "Lote 04"
   },
   {
     name: "José Evano de Oliveira",
@@ -41,17 +39,17 @@ export const data = [
     documents: [
       "contrato-evano.pdf",
     ],
-    lote: "05"
+    msg: "Lote 05"
   },
   {
     name: "Maria Aparecida de Lima Santos",
     pay: false,
     contact: "(81) 9717-8830",
-    descrpition: "Comprou o lote 19 que Paulo falou estar disponivél para venda",
+    descrpition: "Comprou o lote 19 que em  Paulo falou estar disponivél para venda",
     documents: [
       "contrato-maria-aparecida.pdf",
     ],
-    lote: "19"
+    msg: "Lote 19"
   },
   {
     name: "Rubem Fernando de Souza",
@@ -61,7 +59,7 @@ export const data = [
     documents: [
       "contrato-rubem.pdf"
     ],
-    lote: "07"
+    msg: "Lote 07"
   },
   {
     name: "José Lucas de Araújo Silva",
@@ -72,7 +70,7 @@ export const data = [
       "contrato-jose-lucas-08.pdf",
       "contrato-jose-lucas-09.pdf"
     ],
-    lote: "08 e 09"
+    msg: "Lotes 08 e 09"
   },
   {
     name: "Rafael de Araújo Silva",
@@ -82,7 +80,7 @@ export const data = [
     documents: [
       "contrato-rafael.pdf"
     ],
-    lote: "10"
+    msg: "Lote 10"
   },
   {
     name: "Maria Alessandra da Silva Lima Alquino",
@@ -92,7 +90,7 @@ export const data = [
     documents: [
       "contrato-maria-alessandra.pdf"
     ],
-    lote: "01"
+    msg: "Lote 01"
   },
   {
     name: "Luiz Fernando",
@@ -100,7 +98,7 @@ export const data = [
     contact: "(81) 9530-5870",
     descrpition: "Luiz comprou um lote e pelo local apontado por ele é o lote 09 não foi possivel ver seu contrato mas, segundo ele consta o lote 04 como objeto do negócio",
     documents: [],
-    lote: "04"
+    msg: "Lote 04"
   },
   {
     name: "Lucas construção ocupada",
@@ -108,7 +106,7 @@ export const data = [
     contact: "(81) 9636-3854",
     descrpition: "Lucas, apelidado de Velhinho, pagou e ao ser informado que não houve pagamento da parte de Paulo prometeu nos pagar novamente se fosse nescessário.",
     documents: [],
-    lote: ""
+    msg: ""
   },
   {
     name: "Maria Aldiclecia da Silva Celestino",
@@ -118,6 +116,6 @@ export const data = [
     documents: [
       "contrato-aldiclecia.pdf"
     ],
-    lote: "06"
+    msg: "Lote 06"
   },
 ]
