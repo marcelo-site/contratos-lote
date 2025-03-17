@@ -30,14 +30,19 @@ const contentSubject = async (containerSubject) => {
         button.innerHTML = `<sup>${icon}</sup>`
 
         button.addEventListener("click", () => {
-          const div = document.createElement("span");
+          const containerNormaDesc = document.createElement("div");
+          const h3 = document.createElement("h3");
+          h3.style.fontWeight = 400;
+          h3.innerHTML = `<span class="title-subject">Assunto: </span> ${item.toUpperCase()}`
+          containerNormaDesc.append(h3);
+
           if (desc) {
-            div.innerHTML += `<div><span style="font-weight: 600; font-size:20px; margin: 10px 0; display:inline-block;">Explicação: </span><br />${desc}</div>`
+            containerNormaDesc.innerHTML += `<div><span class="title-subject">Explicação: </span>${desc}</div>`
           }
           if (norma) {
-            div.innerHTML += `<div><span style="font-weight: 600; font-size:20px; margin: 10px 0; display:inline-block;">Norma: </span><br />${norma}</div>`
+            containerNormaDesc.innerHTML += `<div><span class="title-subject">Norma: </span>${norma}</div>`
           }
-          showSheet(div)
+          showSheet(containerNormaDesc)
         })
 
         div.append(button)
