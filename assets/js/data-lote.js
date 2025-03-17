@@ -114,7 +114,9 @@ export const data = [
     contact: "(81) 8171-7875",
     descrpition: "",
     documents: [
-      "contrato-aldiclecia.pdf"
+      "contrato-aldiclecia.pdf",
+      "Comprovante_15-03-2025_173527.pdf",
+      "Comprovante_15-03-2025_173615.pdf"
     ],
     msg: "Lote 06"
   },
