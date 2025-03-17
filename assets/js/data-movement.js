@@ -139,4 +139,4 @@ Cumpra-se, expedindo-se o necessário. Brejo da Madre de Deus
   },
 ];
 
-export const docsProcess = ["Peticao. Exordial.PDF", "Decisão-12-03-2025.pdf"]
+export const docsProcess = ["Decisão-12-03-2025.pdf", "Peticao. Exordial.PDF"]
