@@ -112,7 +112,7 @@ export const data = [
     name: "Maria Aldiclecia da Silva Celestino",
     pay: false,
     contact: "(81) 8171-7875",
-    descrpition: "",
+    descrpition: "Aldiclecia pagou 14 mil em duas tranferencias PIX nos mês de maio de 2023",
     documents: [
       "contrato-aldiclecia.pdf",
       "Comprovante_15-03-2025_173527.pdf",
