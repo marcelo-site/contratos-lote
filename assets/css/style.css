@@ -147,7 +147,7 @@ tr th {
 }
 
 tr td:not(td:first-child) {
-  width: 56px;
+  width: 48px;
 }
 
 .container-description td {

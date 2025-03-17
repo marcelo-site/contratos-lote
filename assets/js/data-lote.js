@@ -35,7 +35,7 @@ export const data = [
     name: "José Evano de Oliveira",
     pay: false,
     contact: "",
-    descrpition: "Foi negociado com Dorgival",
+    descrpition: "Lote já foi negociado com Dorgival",
     documents: [
       "contrato-evano.pdf",
     ],
@@ -104,7 +104,7 @@ export const data = [
     name: "Lucas construção ocupada",
     pay: false,
     contact: "(81) 9636-3854",
-    descrpition: "Lucas, apelidado de Velhinho, pagou e ao ser informado que não houve pagamento da parte de Paulo prometeu nos pagar novamente se fosse nescessário.",
+    descrpition: "Lucas, apelidado de Velhinho, ao ser informado que não houve pagamento da parte de Paulo prometeu nos pagar novamente se fosse nescessário",
     documents: [],
     msg: ""
   },
