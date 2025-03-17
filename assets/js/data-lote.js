@@ -14,10 +14,10 @@ export const data = [
     name: "Maria Edinice Silva Sant'ana",
     pay: false,
     contact: "(81) 9 8252-3632",
-    descrpition: "Alega ter feito um adiantamento e com isso recebeu um desconto, há pouco junto com o marido começou a construir, o marido é um  homem com um tampão no olho chamado Genegrecio ou Antonio de Jó",
+    descrpition: "Edinice Alega ter feito um adiantamento e com isso recebeu um desconto, mesmo depois de alertar sobre a situação junto com o marido começou a construir, o marido é um  homem com um tampão no olho chamado Genegrecio ou Antonio de Jó",
     documents: [
-      "contrato-ednice.pdf",
-      "recibo-ednice.pdf",
+      "contrato-edinice.pdf",
+      "recibo-edinice.pdf",
     ],
     msg: "Lote 15"
   },

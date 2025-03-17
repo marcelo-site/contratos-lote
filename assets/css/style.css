@@ -11,6 +11,7 @@
   --color-secondary: #292929;
   --color-hover: #ddd;
   --color-alt: #f1f1f1;
+  --background-gray: #f1f1f1;
 }
 
 body {
@@ -88,6 +89,13 @@ td i {
   font-size: 1.5rem;
 }
 
+caption {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  font-weight: 500;
+  text-align: start;
+}
+
 table {
   width: 100%;
   margin-bottom: 2rem;
@@ -103,9 +111,12 @@ thead {
   font-size: 1.25rem;
 }
 
+thead th {
+  font-weight: 500;
+}
+
 thead tr,
 th {
-  font-weight: 500;
   border-color: var(--color-secondary);
   font-size: 1.5rem;
 }
@@ -130,10 +141,13 @@ tr:nth-child(even) {
 }
 
 tr td:first-child,
-tr th:first-child {
+tr th {
   text-align: start;
   padding-left: 10px;
-  font-weight: 500;
+}
+
+tr td:not(td:first-child) {
+  width: 56px;
 }
 
 .container-description td {
@@ -141,10 +155,6 @@ tr th:first-child {
   border: 0;
   align-items: flex-start;
   justify-content: center;
-}
-
-.container-description td {
-  text-align: start;
 }
 
 .description {
@@ -321,14 +331,12 @@ details[open] summary:after {
   content: "-";
 }
 
-/* Style the tab */
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  background-color: var(--background-gray);
 }
 
-/* Style the buttons inside the tab */
 .tab button {
   background-color: inherit;
   float: left;
@@ -347,12 +355,10 @@ details[open] summary:after {
   }
 }
 
-/* Change background color of buttons on hover */
 .tab button:hover {
   background-color: #ddd;
 }
 
-/* Create an active/current tablink class */
 .tab button.active {
   background-color: #ccc;
   background-color: var(--color-secondary);
@@ -362,7 +368,6 @@ details[open] summary:after {
 
 }
 
-/* Style the tab content */
 .tabcontent {
   padding: 6px 12px;
   border: 1px solid #ccc;

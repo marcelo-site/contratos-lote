@@ -1,11 +1,12 @@
-import { showSheet } from "./bottom-sheet.js"
-import { data } from "./data-lote.js"
-const table = document.querySelector("table")
-const tbody = table.querySelector("tbody")
+import { showSheet } from "./bottom-sheet.js";
+import { data } from "./data-lote.js";
+const table = document.querySelector("table");
+const tbody = table.querySelector("tbody");
+const caption = table.querySelector("caption")
 
 function greeting(name, msg) {
-  const date = new Date()
-  const hrs = date.getHours()
+  const date = new Date();
+  const hrs = date.getHours();
 
   if (hrs >= 0 && hrs < 12) {
     return `Olá, bom dia!\n${name}\n${msg}`
@@ -26,7 +27,12 @@ function viewPDF(doc) {
 }
 
 function renderTable({ name, pay, data }) {
+
   const tr = document.createElement("tr");
+  tr.addEventListener("click", () => {
+    const content = contentInfo(data);
+    showSheet(content);
+  })
   const tdName = document.createElement("td");
   tdName.classList.add("ellipsis")
   tdName.innerText = name
@@ -44,11 +50,6 @@ function renderTable({ name, pay, data }) {
   const tdEye = document.createElement("td")
   tdEye.classList.add("eye", "show-btn");
   tdEye.innerHTML = `<i class="bi bi-eye-fill"></i>`;
-
-  tdEye.addEventListener("click", () => {
-    const content = contentInfo(data);
-    showSheet(content);
-  })
   tr.append(tdEye);
 
   return tr
@@ -128,6 +129,7 @@ function contentInfo(data) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  caption.innerHTML = `# ${data.length} lotes`
   data.forEach((item) => {
     const { name, pay, lote } = item
     const tr = renderTable({ name, pay, data: item, lote })
