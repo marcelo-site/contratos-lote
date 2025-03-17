@@ -6,13 +6,14 @@ const dragIcon = document.querySelector(".drag-icon")
 
 let isDragging = false
 let startY
-const windowHeight = window.innerHeight
+// let windowHeight = window.innerHeight
 
 const updateHeight = (height) => {
   containerBottom.style.height = `${height}px`;
 };
 
 export const showSheet = (data) => {
+  const windowHeight = window.innerHeight
   bottomSheet.classList.add("show");
   updateHeight(windowHeight * 0.9);
   content.appendChild(data)
@@ -33,7 +34,7 @@ const dragStart = (e) => {
 
 const dragging = (e) => {
   if (!isDragging) return;
-
+  const windowHeight = window.innerHeight
   const delta = startY - (e.pageY || e.touches?.[0].pageY) + window.scrollY;
   const newHeight = ((windowHeight - startY) + delta);
 
@@ -46,6 +47,7 @@ const dragging = (e) => {
 
 const dragStop = () => {
   isDragging = false;
+  const windowHeight = window.innerHeight
   bottomSheet.classList.remove("dragging");
   const sheetHeight = parseInt(containerBottom.style.height);
 
