@@ -105,6 +105,10 @@ table i {
   cursor: pointer;
 }
 
+tr {
+  cursor: pointer;
+}
+
 thead {
   background-color: var(--color-secondary);
   color: var(--primary-color);
