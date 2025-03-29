@@ -19,6 +19,7 @@ body {
   max-width: 100vw;
   padding: 2rem 8px;
   color: #333;
+  background-color: white;
 }
 
 .container {
@@ -270,10 +271,6 @@ tr td:not(td:first-child) {
       line-height: 1.5rem;
       color: #2d2d2d;
       padding-bottom: 2rem;
-    }
-
-    summary {
-      margin-bottom: 2rem;
     }
 
     details summary::after {

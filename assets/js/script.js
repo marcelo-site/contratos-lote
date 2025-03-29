@@ -2,7 +2,6 @@ import { showSheet } from "./bottom-sheet.js";
 import { data } from "./data-lote.js";
 const table = document.querySelector("table");
 const tbody = table.querySelector("tbody");
-const caption = table.querySelector("caption")
 
 function greeting(name, msg) {
   const date = new Date();
@@ -27,7 +26,6 @@ function viewPDF(doc) {
 }
 
 function renderTable({ name, pay, data }) {
-
   const tr = document.createElement("tr");
   tr.addEventListener("click", () => {
     const content = contentInfo(data);
@@ -129,7 +127,8 @@ function contentInfo(data) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  caption.innerHTML = `# ${data.length} lotes`
+  document.querySelector("#qty-lotes").innerHTML = `(${data.length})`
+
   data.forEach((item) => {
     const { name, pay, lote } = item
     const tr = renderTable({ name, pay, data: item, lote })

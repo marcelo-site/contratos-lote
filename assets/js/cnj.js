@@ -35,28 +35,32 @@ const contentLine = (active) => {
 </div>`;
 }
 
-const contentMovement = ({ date, content, open }) => {
+const contentMovement = ({ dataHora, fase, texto, open }) => {
+  const date = new Date(dataHora);
+  const padStart = (text) => String(text).padStart(2, "0");
   return (
     ` <details ${open ? "open" : ""}>
-      <summary class="summary" style="width:100%; border: 0; padding: 0;">${date}</summary>
-    <p>${content}</p>
+      <summary class="summary" style="width:100%; border: 0; padding: 0;">${padStart(date.getDate()) + "/" + padStart(date.getMonth()) + "/" + date.getFullYear()}
+      </summary>
+    <div>${fase}</div>
+    <p>${texto || ''}</p>
       </details`
   )
 }
 
-const insertMovements = ({ date, content, active }) => {
+const insertMovements = ({ dataHora, texto, fase, active }) => {
   const div = document.createElement("div");
   div.classList.add("card");
   div.innerHTML = contentLine(active);
-  div.innerHTML += contentMovement({ date, content, open: false });
+  div.innerHTML += contentMovement({ dataHora, fase, texto, open: false });
   return div
 }
 
 dataMovements.forEach((item, i) => {
-  let active = true
-  if (i === 0) active = false
+  let active = true;
+  if (i === 0) active = false;
 
-  const content = insertMovements({ ...item, active })
+  const content = insertMovements({ ...item, active });
   containerMovements.append(content)
 });
 
